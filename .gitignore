@@ -3,6 +3,8 @@ tmp
 target/bin/
 target/lib/
 target/src/
+target/libssh2*
+target/openssl*
 
 build/
 DerivedData/
