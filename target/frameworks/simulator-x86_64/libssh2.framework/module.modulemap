@@ -1,0 +1,9 @@
+module Libssh2 {
+    header "shim.h"
+
+    link "ssl"
+    link "crypto"
+    link "ssh2"
+    
+    export *
+}

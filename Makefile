@@ -20,9 +20,9 @@ STATIC_IOS := $(TARGETDIR)/libssh2_iOS-arm64.framework/libssh2.a
 STATIC_MACOS := $(TARGETDIR)/libssh2_macOS-x86_64.framework/libssh2.a
 STATIC_SIM := $(TARGETDIR)/libssh2_simulator-x86_64.framework/libssh2.a
 
-FRAMEWORK_IOS := $(TARGETDIR)/frameworks/iOS-arm64/libssh2.framework
-FRAMEWORK_MACOS := $(TARGETDIR)/frameworks/macOS-x86_64/libssh2.framework
-FRAMEWORK_SIM := $(TARGETDIR)/frameworks/simulator-x86_64/libssh2.framework
+FRAMEWORK_IOS := $(TARGETDIR)/frameworks/iOS-arm64/Libssh2.framework
+FRAMEWORK_MACOS := $(TARGETDIR)/frameworks/macOS-x86_64/Libssh2.framework
+FRAMEWORK_SIM := $(TARGETDIR)/frameworks/simulator-x86_64/Libssh2.framework
 
 
 OUTPUT_DIR := framework
@@ -59,9 +59,14 @@ framework:
 framework_static:
 	xcodebuild -create-xcframework \
 		-library ${STATIC_IOS} \
+		-headers ${STATIC_IOS}/Headers \
 		-library ${STATIC_MACOS} \
 		-library ${STATIC_SIM} \
 		-output libssh2.xcframework
+
+codesign:
+	codesign_identity=$(security find-identity -v -p codesigning | grep A33F2F2 | grep -o -E '\w{40}' | head -n 1)
+	codesign -f --deep -s  "$codesign_identity" libssh2.xcframework
 
 clean:
 	@echo " Cleaning...";
