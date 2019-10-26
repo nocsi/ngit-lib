@@ -5,6 +5,7 @@ target/lib/
 target/src/
 target/libssh2*
 target/openssl*
+target/*.tar.gz
 
 build/
 DerivedData/
