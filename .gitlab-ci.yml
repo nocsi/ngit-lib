@@ -1,7 +1,6 @@
 stages:
   - build
   - archive
-  - release
 
 variables:
   LC_ALL: "en_US.UTF-8"
@@ -20,7 +19,7 @@ build:
   tags:
     - macos
 
-build:
+archive:
   stage: archive
   script:
     - make framework
