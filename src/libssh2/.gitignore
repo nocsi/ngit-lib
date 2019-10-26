@@ -1,0 +1,10 @@
+bin
+lib
+*.gz
+LibSSH2-for-iOS.xcodeproj/xcuserdata
+src
+build
+LibSSH2-for-iOS.xcodeproj/project.xcworkspace/xcuserdata
+include/libssh2
+*.framework
+*.xccheckout
