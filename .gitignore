@@ -1,11 +1,8 @@
 tmp
-openssl*
-libssh2*
-libressl*
 .DS_Store
-target/bin
-target/lib
-target/src
+target/bin/
+target/lib/
+target/src/
 
 build/
 DerivedData/
