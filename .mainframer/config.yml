@@ -1,0 +1,6 @@
+remote:
+  host: "macslave"
+push:
+  compression: 1
+pull: 
+  compression: 9

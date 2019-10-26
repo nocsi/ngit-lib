@@ -1,0 +1,13 @@
+push:
+  - "libssh2_*"
+  - "openssl_*"
+  - "target"
+  - "src/openssl/bin"
+  - "src/openssl/include"
+  - "src/openssl/lib"
+pull:
+  - "Makefile"
+  - "*.sh"
+  - "build.sh"
+  - "src/openssl/*.sh"
+  - "src/libssh/*.sh"

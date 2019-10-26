@@ -1,0 +1,32 @@
+stages:
+  - build
+  - archive
+  - release
+
+variables:
+  LC_ALL: "en_US.UTF-8"
+  LANG: "en_US.UTF-8"
+
+build:
+  stage: build
+  script:
+    - make
+  retry: 2
+  artifacts:
+    paths:
+      - target/bin
+      - target/include
+      - target/frameworks
+  tags:
+    - macos
+
+build:
+  stage: archive
+  script:
+    - make framework
+  retry: 2
+  artifacts:
+    paths:
+      - libssh2.xcframework
+  tags:
+    - macos
