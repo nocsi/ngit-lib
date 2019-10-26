@@ -1,7 +1,6 @@
 # issh2
 
-iSSH2 is a bash script for compiling Libssh2 (and OpenSSL) for iOS, macOS, watchOS and tvOS.
-issh2 is a repository for building OpenSSL & Libssh2 as an xcframework to support iOS, MacCatalyst, watchOS and tvOS.
+issh2 is a repository for building Libssh2 (and OpenSSL) as an xcframework for iOS, MacCatalyst, watchOS and tvOS.
 
 - Libssh2: [Website](http://www.libssh2.org) | [Documentation](http://www.libssh2.org/docs.html) | [Changelog](http://www.libssh2.org/changes.html)
 - OpenSSL: [Website](http://www.openssl.org) | [Documentation](http://www.openssl.org/docs/) | [Changelog](http://www.openssl.org/news/)
@@ -17,8 +16,8 @@ issh2 is a repository for building OpenSSL & Libssh2 as an xcframework to suppor
 
 ## Tested with
 
-- Xcode: 10.2.1
-- iOS SDK: 12.2
+- Xcode: 11.1
+- iOS SDK: 13.0
 - Libssh2: 1.9.0
 - OpenSSL: 1.1.0c
 - Architectures: arm64 arm64e x86_64
