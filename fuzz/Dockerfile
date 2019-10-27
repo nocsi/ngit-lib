@@ -8,8 +8,7 @@ RUN git clone https://github.com/lunixbochs/usercorn.git && \
   make deps)
 
 FROM golang:1.13.3-buster
+WORKDIR /usercorn
 
-COPY --from=builder /usercorn /usercorn
-
-
-
+COPY --from=builder /usercorn .
+ADD . .
