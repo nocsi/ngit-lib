@@ -4,17 +4,21 @@
 #
 #
 
-DEFAULTTARGETS="ios64-cross-arm64 mac-catalyst-x86_64"
+DEFAULTTARGETS="ios64-cross mac-catalyst-x86_64"
 DEFAULTFWTARGETS="iOS-arm64 macOS-x86_64 simulator-x86_64"
-OPENSSLVER="1.1.0f"
+OPENSSLVER="1.1.1d"
 LIBSSHVER="1.9.0"
+LIBCURLVER="7.66.0"
+LIBGITVER="0.28.3"
 
 CUR_DIR = $(CURDIR)
 TARGETDIR := target
 
 BUILD_OPENSSL := $(realpath $(CUR_DIR)/src/openssl/build-libssl.sh)
 BUILD_LIBSSH := $(realpath $(CUR_DIR)/src/libssh2/build-libssh.sh)
-CREATE_FRAMEWORK := $(realpath $(CUR_DIR)/src/libssh2/create-libssh-framework.sh)
+BUILD_LIBCURL := $(realpath $(CUR_DIR)/src/libcurl/build-libcurl.sh)
+BUILD_LIBGIT := $(realpath $(CUR_DIR)/src/libgit2/build-libgit.sh)
+CREATE_FRAMEWORK := $(realpath $(CUR_DIR)/create-ngit-framework.sh)
 
 STATIC_IOS := $(TARGETDIR)/libssh2_iOS-arm64.framework/libssh2.a
 STATIC_MACOS := $(TARGETDIR)/libssh2_macOS-x86_64.framework/libssh2.a
@@ -24,7 +28,6 @@ FRAMEWORK_IOS := $(TARGETDIR)/frameworks/iOS-arm64/Libssh2.framework
 FRAMEWORK_MACOS := $(TARGETDIR)/frameworks/macOS-x86_64/Libssh2.framework
 FRAMEWORK_SIM := $(TARGETDIR)/frameworks/simulator-x86_64/Libssh2.framework
 
-
 OUTPUT_DIR := framework
 
 default: clean build
@@ -33,20 +36,26 @@ build: build_ios build_macos build_sim
 
 build_ios:
 	( cd ./$(TARGETDIR) && \
-	$(BUILD_OPENSSL) --targets="ios64-cross-arm64" --ec-nistp-64-gcc-128 --version=$(OPENSSLVER) && \
+	$(BUILD_OPENSSL) --targets="ios64-cross-arm64" --ec-nistp-64-gcc-128 --version=1.1.0f && \
 	$(BUILD_LIBSSH) --targets="ios64-cross-arm64" --version=$(LIBSSHVER) && \
+	$(BUILD_LIBCURL) --targets="ios64-cross-arm64" --version=$(LIBCURLVER) && \
+  $(BUILD_LIBGIT) --targets="ios64-cross-arm64" --version=$(LIBGITVER) && \
 	$(CREATE_FRAMEWORK) --targets="iOS-arm64" )
 
 build_macos:
 	( cd ./$(TARGETDIR) && \
-	$(BUILD_OPENSSL) --targets="mac-catalyst-x86_64" --ec-nistp-64-gcc-128 --version=$(OPENSSLVER) && \
+	$(BUILD_OPENSSL) --targets="mac-catalyst-x86_64" --ec-nistp-64-gcc-128 --version=1.1.0f && \
 	$(BUILD_LIBSSH) --targets="mac-catalyst-x86_64" --version=$(LIBSSHVER) && \
+	$(BUILD_LIBCURL) --targets="mac-catalyst-x86_64" --version=$(LIBCURLVER) && \
+	$(BUILD_LIBGIT) --targets="mac-catalyst-x86_64" --version=$(LIBGITVER) --verbose && \
 	$(CREATE_FRAMEWORK) --targets="macOS-x86_64" )
 
 build_sim:
 	( cd ./$(TARGETDIR) && \
-	$(BUILD_OPENSSL) --targets="ios-sim-cross-x86_64" --ec-nistp-64-gcc-128 --version=$(OPENSSLVER) && \
+	$(BUILD_OPENSSL) --targets="ios-sim-cross-x86_64" --ec-nistp-64-gcc-128 --version=1.1.0f && \
 	$(BUILD_LIBSSH) --targets="ios-sim-cross-x86_64" --version=$(LIBSSHVER) && \
+	$(BUILD_LIBCURL) --targets="ios-sim-cross-x86_64" --version=$(LIBCURLVER) && \
+	$(BUILD_LIBGIT) --targets="ios-sim-cross-x86_64" --version=$(LIBGITVER) && \
 	$(CREATE_FRAMEWORK) --targets="simulator-x86_64" )
 
 framework:
@@ -54,7 +63,7 @@ framework:
 		-framework ${FRAMEWORK_IOS} \
 		-framework ${FRAMEWORK_MACOS} \
 		-framework ${FRAMEWORK_SIM} \
-		-output libssh2.xcframework
+		-output nGit.xcframework
 
 framework_static:
 	xcodebuild -create-xcframework \

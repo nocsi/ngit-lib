@@ -55,15 +55,17 @@ do
   # Add build target, --prefix and prevent async (references to getcontext(),
   # setcontext() and makecontext() result in App Store rejections) and creation
   # of shared libraruuuies (default since 1.1.0)
-  LOCAL_CONFIG_OPTIONS="--host=${HOST} --prefix=${TARGETDIR} ${CONFIG_OPTIONS} --disable-debug --disable-dependency-tracking --disable-silent-rules --disable-examples-build --with-libz --with-libssl-prefix=${OPENSSLDIR} --disable-shared --enable-static"
+  export LOCAL_CONFIG_OPTIONS="--host=${HOST} --prefix=${TARGETDIR} ${CONFIG_OPTIONS} --disable-debug --disable-dependency-tracking --disable-silent-rules --disable-examples-build --with-libz --with-libssl-prefix=${TARGETDIR} --disable-shared --enable-static --with-crypto=openssl"
   if [[ "${PLATFORM}" == "MacOSX" ]]; then
-    export CFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT --target=x86_64-apple-ios13.0-macabi -mmacosx-version-min=${MACOSX_MIN_SDK_VERSION} -fembed-bitcode"
+    export CFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT --target=x86_64-apple-ios13.0-macabi -mmacosx-version-min=${MACOSX_MIN_SDK_VERSION} -fembed-bitcode -L${OPENSSLDIR}/lib"
     export CPPFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT --target=x86_64-apple-ios13.0-macabi -mmacosx-version-min=${MACOSX_MIN_SDK_VERSION}"
   else
-    #export CFLAGS="-arch $ARCH -pipe -no-cpp-precomp -isysroot $SDKROOT -mios-version-min=13.0 -fembed-bitcode"
-    export CFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -mios-version-min=13.0 -fembed-bitcode"
+    export CFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -mios-version-min=13.0 -fembed-bitcode -L${OPENSSLDIR}/lib"
     export CPPFLAGS="-arch $ARCH -pipe -no-cpp-precomp -fPIE -isysroot $SDKROOT -mios-version-min=13.0"
   fi
+  CLANG="/usr/bin/xcrun clang"
+  export CC="$CLANG"
+  export CPP="$CLANG -E"
 
   # Run Configure
   run_configure

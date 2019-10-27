@@ -1,6 +1,7 @@
 stages:
   - build
   - archive
+  - fuzz
 
 variables:
   LC_ALL: "en_US.UTF-8"
@@ -26,6 +27,11 @@ archive:
   retry: 2
   artifacts:
     paths:
-      - libssh2.xcframework
+      - nGit.xcframework
   tags:
     - macos
+
+fuzz:
+  stage: fuzz
+  script:
+    - 

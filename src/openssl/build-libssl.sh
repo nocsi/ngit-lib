@@ -27,9 +27,7 @@ set -u
 # Default version in case no version is specified
 DEFAULTVERSION="1.0.2l"
 
-# Default (=full) set of architectures (OpenSSL <= 1.0.2) or targets (OpenSSL >= 1.1.0) to build
-DEFAULTARCHS="x86_64 i386 arm64 armv7s armv7 tv_x86_64 tv_arm64"  # MacOSX_x86_64 is a valid architecture that is not in the DEFAULTARCHS because it's incompatible with "x86_64"
-DEFAULTTARGETS="ios-sim-cross-x86_64 ios-sim-cross-i386 ios64-cross-arm64 ios-cross-armv7s ios-cross-armv7 tvos-sim-cross-x86_64 tvos64-cross-arm64"  # mac-catalyst-x86_64 is a valid target that is not in the DEFAULTTARGETS because it's incompatible with "ios-sim-cross-x86_64"
+DEFAULTTARGETS="ios-sim-cross-x86_64 ios-sim-cross-i386 ios64-cross ios-cross-armv7s ios-cross-armv7 tvos-sim-cross-x86_64 tvos64-cross-arm64"  # mac-catalyst-x86_64 is a valid target that is not in the DEFAULTTARGETS because it's incompatible with "ios-sim-cross-x86_64"
 
 # Minimum iOS/tvOS SDK version to build for
 IOS_MIN_SDK_VERSION="13.0"

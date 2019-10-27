@@ -35,6 +35,9 @@ extern "C" {
 #ifndef OPENSSL_THREADS
 # define OPENSSL_THREADS
 #endif
+#ifndef OPENSSL_NO_AFALGENG
+# define OPENSSL_NO_AFALGENG
+#endif
 #ifndef OPENSSL_NO_ASAN
 # define OPENSSL_NO_ASAN
 #endif
@@ -53,6 +56,9 @@ extern "C" {
 #ifndef OPENSSL_NO_EGD
 # define OPENSSL_NO_EGD
 #endif
+#ifndef OPENSSL_NO_ENGINE
+# define OPENSSL_NO_ENGINE
+#endif
 #ifndef OPENSSL_NO_FUZZ_AFL
 # define OPENSSL_NO_FUZZ_AFL
 #endif
@@ -61,6 +67,9 @@ extern "C" {
 #endif
 #ifndef OPENSSL_NO_HEARTBEATS
 # define OPENSSL_NO_HEARTBEATS
+#endif
+#ifndef OPENSSL_NO_HW
+# define OPENSSL_NO_HW
 #endif
 #ifndef OPENSSL_NO_MSAN
 # define OPENSSL_NO_MSAN
@@ -169,7 +178,7 @@ extern "C" {
 # undef THIRTY_TWO_BIT
 #endif
 
-#define RC4_INT unsigned int
+#define RC4_INT unsigned char
 
 #ifdef  __cplusplus
 }
