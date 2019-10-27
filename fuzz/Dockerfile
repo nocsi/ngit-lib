@@ -5,10 +5,6 @@ RUN apk update && apk add --no-cache git cmake make g++ build-base gcc wget bash
 WORKDIR /usercorn
 RUN git clone https://github.com/lunixbochs/usercorn.git && \
   ( cd usercorn && \
-  make deps)
-
-FROM golang:1.13.3-buster
-WORKDIR /usercorn
-
-COPY --from=builder /usercorn .
-ADD . .
+  make deps && \
+  make)
+COPY . .
