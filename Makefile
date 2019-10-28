@@ -75,7 +75,7 @@ framework_static:
 
 codesign:
 	codesign_identity=$(security find-identity -v -p codesigning | grep A33F2F2 | grep -o -E '\w{40}' | head -n 1)
-	codesign -f --deep -s  "$codesign_identity" libssh2.xcframework
+	codesign -f --deep -s A33F2F2109D0B247A923E3DA0AB159D8E559020C libgit2.xcframework
 
 clean:
 	@echo " Cleaning...";

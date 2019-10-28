@@ -7,6 +7,7 @@ target/libssh2*
 target/openssl*
 target/*.tar.gz
 libssh2.xcframework
+libgit2.xcframework
 
 build/
 DerivedData/
