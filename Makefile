@@ -20,13 +20,13 @@ BUILD_LIBCURL := $(realpath $(CUR_DIR)/src/libcurl/build-libcurl.sh)
 BUILD_LIBGIT := $(realpath $(CUR_DIR)/src/libgit2/build-libgit.sh)
 CREATE_FRAMEWORK := $(realpath $(CUR_DIR)/create-ngit-framework.sh)
 
-STATIC_IOS := $(TARGETDIR)/libssh2_iOS-arm64.framework/libssh2.a
-STATIC_MACOS := $(TARGETDIR)/libssh2_macOS-x86_64.framework/libssh2.a
-STATIC_SIM := $(TARGETDIR)/libssh2_simulator-x86_64.framework/libssh2.a
+STATIC_IOS := $(TARGETDIR)/frameworks/iOS-arm64/libgit2.framework/libgit2
+STATIC_MACOS := $(TARGETDIR)/frameworks/macOS-x86_64/libgit2.framework/libgit2
+STATIC_SIM := $(TARGETDIR)/frameworks/simulator-x86_64/libgit2.framework/libgit2
 
-FRAMEWORK_IOS := $(TARGETDIR)/frameworks/iOS-arm64/Libssh2.framework
-FRAMEWORK_MACOS := $(TARGETDIR)/frameworks/macOS-x86_64/Libssh2.framework
-FRAMEWORK_SIM := $(TARGETDIR)/frameworks/simulator-x86_64/Libssh2.framework
+FRAMEWORK_IOS := $(TARGETDIR)/frameworks/iOS-arm64/libgit2.framework
+FRAMEWORK_MACOS := $(TARGETDIR)/frameworks/macOS-x86_64/libgit2.framework
+FRAMEWORK_SIM := $(TARGETDIR)/frameworks/simulator-x86_64/libgit2.framework
 
 OUTPUT_DIR := framework
 
@@ -39,7 +39,7 @@ build_ios:
 	$(BUILD_OPENSSL) --targets="ios64-cross-arm64" --ec-nistp-64-gcc-128 --version=1.1.0f && \
 	$(BUILD_LIBSSH) --targets="ios64-cross-arm64" --version=$(LIBSSHVER) && \
 	$(BUILD_LIBCURL) --targets="ios64-cross-arm64" --version=$(LIBCURLVER) && \
-  $(BUILD_LIBGIT) --targets="ios64-cross-arm64" --version=$(LIBGITVER) && \
+  $(BUILD_LIBGIT) --targets="ios64-cross-arm64" --version=$(LIBGITVER) --verbose && \
 	$(CREATE_FRAMEWORK) --targets="iOS-arm64" )
 
 build_macos:
@@ -55,7 +55,7 @@ build_sim:
 	$(BUILD_OPENSSL) --targets="ios-sim-cross-x86_64" --ec-nistp-64-gcc-128 --version=1.1.0f && \
 	$(BUILD_LIBSSH) --targets="ios-sim-cross-x86_64" --version=$(LIBSSHVER) && \
 	$(BUILD_LIBCURL) --targets="ios-sim-cross-x86_64" --version=$(LIBCURLVER) && \
-	$(BUILD_LIBGIT) --targets="ios-sim-cross-x86_64" --version=$(LIBGITVER) && \
+	$(BUILD_LIBGIT) --targets="ios-sim-cross-x86_64" --version=$(LIBGITVER) --verbose && \
 	$(CREATE_FRAMEWORK) --targets="simulator-x86_64" )
 
 framework:
@@ -63,15 +63,15 @@ framework:
 		-framework ${FRAMEWORK_IOS} \
 		-framework ${FRAMEWORK_MACOS} \
 		-framework ${FRAMEWORK_SIM} \
-		-output nGit.xcframework
+		-output libgit2.xcframework
 
 framework_static:
 	xcodebuild -create-xcframework \
 		-library ${STATIC_IOS} \
-		-headers ${STATIC_IOS}/Headers \
 		-library ${STATIC_MACOS} \
 		-library ${STATIC_SIM} \
-		-output libssh2.xcframework
+		-headers ${STATIC_IOS}/Headers \
+		-output libgit2.xcframework
 
 codesign:
 	codesign_identity=$(security find-identity -v -p codesigning | grep A33F2F2 | grep -o -E '\w{40}' | head -n 1)

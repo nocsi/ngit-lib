@@ -58,16 +58,17 @@ do
   # setcontext() and makecontext() result in App Store rejections) and creation
   # of shared libraruuuies (default since 1.1.0)
   if [[ "${PLATFORM}" == "MacOSX" ]]; then
-    export CFLAGS="-arch $ARCH -pipe -Os -gdwarf-2 -fPIE -isysroot $SDKROOT --target=x86_64-apple-ios13.0-macabi -mmacosx-version-min=${MACOSX_MIN_SDK_VERSION} -fembed-bitcode -I${OPENSSLDIR}/include -DOPENSSL_NO_SSL2"
-    export CPPFLAGS="-arch $ARCH -pipe -Os -gdwarf-2 -fPIE -isysroot $SDKROOT --target=x86_64-apple-ios13.0-macabi -mmacosx-version-min=${MACOSX_MIN_SDK_VERSION} -I${OPENSSLDIR}/include"
-    export LDFLAGS="-arch $ARCH -L${OPENSSLDIR}/lib -R${OPENSSLDIR}/lib"
+    export CFLAGS="-arch $ARCH -pipe -Os -gdwarf-2 -fPIE -isysroot $SDKROOT --target=x86_64-apple-ios13.0-macabi -miphoneos-version-min=13.0  -fembed-bitcode -I${OPENSSLDIR}/include -DOPENSSL_NO_SSL2"
+    export CPPFLAGS="-arch $ARCH -pipe -Os -gdwarf-2 -fPIE -isysroot $SDKROOT --target=x86_64-apple-ios13.0-macabi -miphoneos-version-min=13.0 -I${OPENSSLDIR}/include"
+    export LDFLAGS="-arch $ARCH -L${OPENSSLDIR}/lib -R${OPENSSLDIR}/lib -fembed-bitcode"
   else
-    export CFLAGS="-arch $ARCH -pipe -Os -fPIE -isysroot $SDKROOT -mios-version-min=13.0 -fembed-bitcode -I${OPENSSLDIR}/include -DOPENSSL_NO_SSL2"
-    export CPPFLAGS="-arch $ARCH -pipe -Os -fPIE -isysroot $SDKROOT -mios-version-min=13.0 -I${OPENSSLDIR}/include"
-    export LDFLAGS="-arch $ARCH -isysroot $SDKROOT -L${OPENSSLDIR}/lib"
+    export CFLAGS="-arch $ARCH -pipe -Os -fPIE -isysroot $SDKROOT -mios-version-min=13.0 -fembed-bitcode -I${OPENSSLDIR}/include -DOPENSSL_NO_SSL2 -fembed-bitcode"
+    export CPPFLAGS="-arch $ARCH -pipe -Os -fPIE -isysroot $SDKROOT -mios-version-min=13.0 -I${OPENSSLDIR}/include -fembed-bitcode"
+    export LDFLAGS="-arch $ARCH -isysroot $SDKROOT -L${OPENSSLDIR}/lib -fembed-bitcode"
   fi
   export LOCAL_CONFIG_OPTIONS="--prefix=${TARGETDIR} --with-ssl=${OPENSSLDIR} --enable-ipv6 --host=${HOST} -disable-shared --enable-static -with-random=/dev/urandom"
   export PKG_CONFIG_PATH="${TARGETDIR}/pkgconfig"
+  export LIPO=""
 
   # Run Configure
   run_configure

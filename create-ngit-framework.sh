@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FWNAME=nGit
+FWNAME=libgit2
 DEFAULTTARGETS="iOS-arm64 macOS-x86_64 simulator-x86_64"  # mac-catalyst-x86_64 is a valid target that is not in the DEFAULTTARGETS because it's incompatible with "ios-sim-cross-x86_64"
 
 echo_help()

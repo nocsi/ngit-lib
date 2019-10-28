@@ -16,7 +16,7 @@ DEFAULTVERSION="0.28.3"
 DEFAULTTARGETS="ios-sim-cross-x86_64 ios-sim-cross-i386 ios64-cross-arm64 ios-cross-armv7s ios-cross-armv7 tvos-sim-cross-x86_64 tvos64-cross-arm64"  # mac-catalyst-x86_64 is a valid target that is not in the DEFAULTTARGETS because it's incompatible with "ios-sim-cross-x86_64"
 
 # Minimum iOS/tvOS SDK version to build for
-IOS_MIN_SDK_VERSION="13.0"
+IOS_MIN_SDK_VERSION="13.1"
 TVOS_MIN_SDK_VERSION="9.0"
 MACOSX_MIN_SDK_VERSION="10.15"
 
@@ -116,10 +116,10 @@ run_configure()
 
   if [ "${LOG_VERBOSE}" == "verbose" ]; then
     cd $COMPILEDIR && \
-    PKG_CONFIG_PATH="${TARGETDIR}/lib/pkgconfig" /usr/local/bin/cmake ../ ${LOCAL_CONFIG_OPTIONS} | tee "${LOG}"
+    PKG_CONFIG_PATH="${TARGETDIR}/lib/pkgconfig" /usr/local/bin/cmake --config Release .. ${LOCAL_CONFIG_OPTIONS} | tee "${LOG}"
   else
     ( cd $COMPILEDIR && \
-    PKG_CONFIG_PATH="${TARGETDIR}/lib/pkgconfig" /usr/local/bin/cmake ../ ${LOCAL_CONFIG_OPTIONS} > "${LOG}" 2>&1 ) & spinner
+    PKG_CONFIG_PATH="${TARGETDIR}/lib/pkgconfig" /usr/local/bin/cmake --config Release .. ${LOCAL_CONFIG_OPTIONS} > "${LOG}" 2>&1 ) & spinner
   fi
 
   # Check for error status
@@ -132,9 +132,10 @@ run_make()
   echo "  Make (using ${BUILD_THREADS} thread(s))..."
 
   if [ "${LOG_VERBOSE}" == "verbose" ]; then
-    /usr/local/bin/cmake --build . --config Release --target install | tee -a "${LOG}"
+    /usr/local/bin/cmake --build . --target install | tee -a "${LOG}"
+    #/usr/local/bin/cmake --build . --config Release --target install | tee -a "${LOG}"
   else
-    (/usr/local/bin/cmake --build . --config Release --target install >> "${LOG}" 2>&1 ) & spinner
+    /usr/local/bin/cmake --build . --target install 
   fi
 
   # Check for error status
@@ -363,7 +364,6 @@ if [ "${CLEANUP}" == "true" ]; then
   fi
   if [ -d "${CURRENTPATH}/include/libgit2" ]; then
     rm -r "${CURRENTPATH}/include/libgit2"
-    rm -f "${CURRENTPATH}/include/*.h"
   fi
   if [ -d "${CURRENTPATH}/lib" ]; then
     rm -r "${CURRENTPATH}/lib"
@@ -387,7 +387,7 @@ LIBGIT_TVOS=()
 # Run relevant build loop (archs = 1.0 style, targets = 1.1 style)
 source "${SCRIPTDIR}/scripts/build-loop-targets.sh"
 
-#Build iOS library if selected for build
+# Build iOS library if selected for build
 if [ ${#LIBGIT_IOS[@]} -gt 0 ]; then
   echo "Build library for iOS..."
   lipo -create ${LIBGIT_IOS[@]} -output "${CURRENTPATH}/lib/libgit2.a"

@@ -198,24 +198,24 @@ am__relativize = \
     dir1=`echo "$$dir1" | sed -e "$$sed_rest"`; \
   done; \
   reldir="$$dir2"
-ACLOCAL = ${SHELL} /Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/src/iPhoneSimulator-x86_64/curl-7.66.0/missing aclocal-1.16
+ACLOCAL = ${SHELL} /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/src/iPhoneSimulator-x86_64/curl-7.66.0/missing aclocal-1.16
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
 AR = /usr/bin/ar
 AR_FLAGS = cr
 AS = as
-AUTOCONF = ${SHELL} /Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/src/iPhoneSimulator-x86_64/curl-7.66.0/missing autoconf
-AUTOHEADER = ${SHELL} /Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/src/iPhoneSimulator-x86_64/curl-7.66.0/missing autoheader
-AUTOMAKE = ${SHELL} /Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/src/iPhoneSimulator-x86_64/curl-7.66.0/missing automake-1.16
+AUTOCONF = ${SHELL} /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/src/iPhoneSimulator-x86_64/curl-7.66.0/missing autoconf
+AUTOHEADER = ${SHELL} /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/src/iPhoneSimulator-x86_64/curl-7.66.0/missing autoheader
+AUTOMAKE = ${SHELL} /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/src/iPhoneSimulator-x86_64/curl-7.66.0/missing automake-1.16
 AWK = awk
 BLANK_AT_MAKETIME = 
 CC = gcc
 CCDEPMODE = depmode=gcc3
-CFLAGS = -arch x86_64 -pipe -Os -fPIE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.1.sdk -mios-version-min=13.0 -fembed-bitcode -isystem /Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/bin/iPhoneSimulator13.1-x86_64.sdk/include -DOPENSSL_NO_SSL2 -Qunused-arguments -Werror=partial-availability
+CFLAGS = -arch x86_64 -pipe -Os -fPIE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.1.sdk -mios-version-min=13.0 -fembed-bitcode -isystem /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk/include -DOPENSSL_NO_SSL2 -fembed-bitcode -Qunused-arguments -Werror=partial-availability
 CFLAG_CURL_SYMBOL_HIDING = -fvisibility=hidden
-CONFIGURE_OPTIONS = " '--prefix=/Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/bin/iPhoneSimulator13.1-x86_64.sdk' '--with-ssl=/Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/bin/iPhoneSimulator13.1-x86_64.sdk' '--enable-ipv6' '--host=x86_64-apple-darwin' '-disable-shared' '--enable-static' '-with-random=/dev/urandom' 'host_alias=x86_64-apple-darwin' 'CFLAGS=-arch x86_64 -pipe -Os -fPIE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.1.sdk -mios-version-min=13.0 -fembed-bitcode -I/Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/bin/iPhoneSimulator13.1-x86_64.sdk/include -DOPENSSL_NO_SSL2' 'LDFLAGS=-arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.1.sdk -L/Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/bin/iPhoneSimulator13.1-x86_64.sdk/lib' 'CPPFLAGS=-arch x86_64 -pipe -Os -fPIE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.1.sdk -mios-version-min=13.0 -I/Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/bin/iPhoneSimulator13.1-x86_64.sdk/include'"
+CONFIGURE_OPTIONS = " '--prefix=/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk' '--with-ssl=/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk' '--enable-ipv6' '--host=x86_64-apple-darwin' '-disable-shared' '--enable-static' '-with-random=/dev/urandom' 'host_alias=x86_64-apple-darwin' 'CFLAGS=-arch x86_64 -pipe -Os -fPIE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.1.sdk -mios-version-min=13.0 -fembed-bitcode -I/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk/include -DOPENSSL_NO_SSL2 -fembed-bitcode' 'LDFLAGS=-arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.1.sdk -L/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk/lib -fembed-bitcode' 'CPPFLAGS=-arch x86_64 -pipe -Os -fPIE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.1.sdk -mios-version-min=13.0 -I/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk/include -fembed-bitcode'"
 CPP = gcc -E
-CPPFLAGS = -arch x86_64 -pipe -Os -fPIE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.1.sdk -mios-version-min=13.0 -isystem /Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/bin/iPhoneSimulator13.1-x86_64.sdk/include -I/Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/bin/iPhoneSimulator13.1-x86_64.sdk/include
+CPPFLAGS = -arch x86_64 -pipe -Os -fPIE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.1.sdk -mios-version-min=13.0 -isystem /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk/include -fembed-bitcode -I/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk/include
 CPPFLAG_CURL_STATICLIB = -DCURL_STATICLIB
 CURLVERSION = 7.66.0
 CURL_CA_BUNDLE = 
@@ -272,7 +272,7 @@ INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 IPV6_ENABLED = 1
 LCOV = 
 LD = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld
-LDFLAGS = -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.1.sdk -L/Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/bin/iPhoneSimulator13.1-x86_64.sdk/lib -L/Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/bin/iPhoneSimulator13.1-x86_64.sdk/lib
+LDFLAGS = -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.1.sdk -L/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk/lib -fembed-bitcode -L/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk/lib
 LIBCURL_LIBS = -lssl -lcrypto -lssl -lcrypto -lz
 LIBMETALINK_CPPFLAGS = 
 LIBMETALINK_LDFLAGS = 
@@ -285,7 +285,7 @@ LN_S = ln -s
 LTLIBOBJS = 
 LT_SYS_LIBRARY_PATH = 
 MAINT = #
-MAKEINFO = ${SHELL} /Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/src/iPhoneSimulator-x86_64/curl-7.66.0/missing makeinfo
+MAKEINFO = ${SHELL} /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/src/iPhoneSimulator-x86_64/curl-7.66.0/missing makeinfo
 MANIFEST_TOOL = :
 MANOPT = -man
 MKDIR_P = .././install-sh -c -d
@@ -346,10 +346,10 @@ VERSION = -
 VERSIONNUM = 074200
 ZLIB_LIBS = -lz
 ZSH_FUNCTIONS_DIR = ${prefix}/share/zsh/site-functions
-abs_builddir = /Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/src/iPhoneSimulator-x86_64/curl-7.66.0/include
-abs_srcdir = /Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/src/iPhoneSimulator-x86_64/curl-7.66.0/include
-abs_top_builddir = /Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/src/iPhoneSimulator-x86_64/curl-7.66.0
-abs_top_srcdir = /Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/src/iPhoneSimulator-x86_64/curl-7.66.0
+abs_builddir = /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/src/iPhoneSimulator-x86_64/curl-7.66.0/include
+abs_srcdir = /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/src/iPhoneSimulator-x86_64/curl-7.66.0/include
+abs_top_builddir = /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/src/iPhoneSimulator-x86_64/curl-7.66.0
+abs_top_srcdir = /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/src/iPhoneSimulator-x86_64/curl-7.66.0
 ac_ct_AR = 
 ac_ct_CC = gcc
 ac_ct_DUMPBIN = link -dump
@@ -378,7 +378,7 @@ host_vendor = apple
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/src/iPhoneSimulator-x86_64/curl-7.66.0/install-sh
+install_sh = ${SHELL} /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/src/iPhoneSimulator-x86_64/curl-7.66.0/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 libext = a
@@ -388,7 +388,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /Users/locnguyen/mainframer/Users/locnguyen/Active/iSSH2/target/bin/iPhoneSimulator13.1-x86_64.sdk
+prefix = /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk
 program_transform_name = s,x,x,
 psdir = ${docdir}
 runstatedir = ${localstatedir}/run
