@@ -85,7 +85,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-build_triplet = x86_64-apple-darwin19.0.0
+build_triplet = x86_64-apple-darwin19.2.0
 host_triplet = x86_64-apple-darwin
 subdir = include
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -211,11 +211,11 @@ AWK = awk
 BLANK_AT_MAKETIME = 
 CC = gcc
 CCDEPMODE = depmode=gcc3
-CFLAGS = -arch x86_64 -pipe -Os -fPIE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.1.sdk -mios-version-min=13.0 -fembed-bitcode -isystem /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk/include -DOPENSSL_NO_SSL2 -fembed-bitcode -Qunused-arguments -Werror=partial-availability
+CFLAGS = -arch x86_64 -pipe -Os -fPIE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk -mios-version-min=13.0 -fembed-bitcode -isystem /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.2-x86_64.sdk/include -DOPENSSL_NO_SSL2 -fembed-bitcode -Qunused-arguments -Werror=partial-availability
 CFLAG_CURL_SYMBOL_HIDING = -fvisibility=hidden
-CONFIGURE_OPTIONS = " '--prefix=/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk' '--with-ssl=/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk' '--enable-ipv6' '--host=x86_64-apple-darwin' '-disable-shared' '--enable-static' '-with-random=/dev/urandom' 'host_alias=x86_64-apple-darwin' 'CFLAGS=-arch x86_64 -pipe -Os -fPIE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.1.sdk -mios-version-min=13.0 -fembed-bitcode -I/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk/include -DOPENSSL_NO_SSL2 -fembed-bitcode' 'LDFLAGS=-arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.1.sdk -L/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk/lib -fembed-bitcode' 'CPPFLAGS=-arch x86_64 -pipe -Os -fPIE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.1.sdk -mios-version-min=13.0 -I/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk/include -fembed-bitcode'"
+CONFIGURE_OPTIONS = " '--prefix=/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.2-x86_64.sdk' '--with-ssl=/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.2-x86_64.sdk' '--enable-ipv6' '--host=x86_64-apple-darwin' '-disable-shared' '--enable-static' '-with-random=/dev/urandom' 'host_alias=x86_64-apple-darwin' 'CFLAGS=-arch x86_64 -pipe -Os -fPIE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk -mios-version-min=13.0 -fembed-bitcode -I/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.2-x86_64.sdk/include -DOPENSSL_NO_SSL2 -fembed-bitcode' 'LDFLAGS=-arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk -L/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.2-x86_64.sdk/lib -fembed-bitcode' 'CPPFLAGS=-arch x86_64 -pipe -Os -fPIE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk -mios-version-min=13.0 -I/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.2-x86_64.sdk/include -fembed-bitcode'"
 CPP = gcc -E
-CPPFLAGS = -arch x86_64 -pipe -Os -fPIE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.1.sdk -mios-version-min=13.0 -isystem /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk/include -fembed-bitcode -I/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk/include
+CPPFLAGS = -arch x86_64 -pipe -Os -fPIE -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk -mios-version-min=13.0 -isystem /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.2-x86_64.sdk/include -fembed-bitcode -I/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.2-x86_64.sdk/include
 CPPFLAG_CURL_STATICLIB = -DCURL_STATICLIB
 CURLVERSION = 7.66.0
 CURL_CA_BUNDLE = 
@@ -272,7 +272,7 @@ INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 IPV6_ENABLED = 1
 LCOV = 
 LD = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld
-LDFLAGS = -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.1.sdk -L/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk/lib -fembed-bitcode -L/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk/lib
+LDFLAGS = -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator13.2.sdk -L/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.2-x86_64.sdk/lib -fembed-bitcode -L/Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.2-x86_64.sdk/lib
 LIBCURL_LIBS = -lssl -lcrypto -lssl -lcrypto -lz
 LIBMETALINK_CPPFLAGS = 
 LIBMETALINK_LDFLAGS = 
@@ -359,10 +359,10 @@ am__quote =
 am__tar = $${TAR-tar} chof - "$$tardir"
 am__untar = $${TAR-tar} xf -
 bindir = ${exec_prefix}/bin
-build = x86_64-apple-darwin19.0.0
+build = x86_64-apple-darwin19.2.0
 build_alias = 
 build_cpu = x86_64
-build_os = darwin19.0.0
+build_os = darwin19.2.0
 build_vendor = apple
 builddir = .
 datadir = ${datarootdir}
@@ -388,7 +388,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.1-x86_64.sdk
+prefix = /Users/locnguyen/mainframer/Users/locnguyen/Active/ngit-lib/target/bin/iPhoneSimulator13.2-x86_64.sdk
 program_transform_name = s,x,x,
 psdir = ${docdir}
 runstatedir = ${localstatedir}/run

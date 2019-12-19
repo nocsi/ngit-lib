@@ -25,10 +25,11 @@ ngit-lib is a repository for building Libssh2, Openssl, libgit2 and libcurl pack
 ## How to build
 
 1. make
-2. make framework
+2a. make framework
+2b. make framework_static
 
 ## How to use
 
-1. Drag n' Drop libssh2.xcframework into your project
+1. Drag n' Drop libgit2.xcframework into your project
 2. Embed and sign the .xcframework in your project's target under "Frameworks, Libraries, and Embedded Content"
 2. There is no step 3

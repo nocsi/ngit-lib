@@ -1,6 +1,6 @@
 #
 #  Makefile
-#  libssh2 for Apple stuff
+#  libgit2 for Apple stuff
 #
 #
 
@@ -20,13 +20,14 @@ BUILD_LIBCURL := $(realpath $(CUR_DIR)/src/libcurl/build-libcurl.sh)
 BUILD_LIBGIT := $(realpath $(CUR_DIR)/src/libgit2/build-libgit.sh)
 CREATE_FRAMEWORK := $(realpath $(CUR_DIR)/create-ngit-framework.sh)
 
-STATIC_IOS := $(TARGETDIR)/frameworks/iOS-arm64/libgit2.framework/libgit2
-STATIC_MACOS := $(TARGETDIR)/frameworks/macOS-x86_64/libgit2.framework/libgit2
-STATIC_SIM := $(TARGETDIR)/frameworks/simulator-x86_64/libgit2.framework/libgit2
+STATIC_IOS := $(TARGETDIR)/frameworks/iOS-arm64/libgit2.framework/libgit2.a
+STATIC_MACOS := $(TARGETDIR)/frameworks/macOS-x86_64/libgit2.framework/libgit2.a
+STATIC_SIM := $(TARGETDIR)/frameworks/simulator-x86_64/libgit2.framework/libgit2.a
 
 FRAMEWORK_IOS := $(TARGETDIR)/frameworks/iOS-arm64/libgit2.framework
 FRAMEWORK_MACOS := $(TARGETDIR)/frameworks/macOS-x86_64/libgit2.framework
 FRAMEWORK_SIM := $(TARGETDIR)/frameworks/simulator-x86_64/libgit2.framework
+FRAMEWORK_HEADERS := $(TARGETDIR)/frameworks/iOS-arm64/libgit2.framework/Headers
 
 OUTPUT_DIR := framework
 
@@ -68,14 +69,16 @@ framework:
 framework_static:
 	xcodebuild -create-xcframework \
 		-library ${STATIC_IOS} \
+		-headers ${FRAMEWORK_HEADERS} \
 		-library ${STATIC_MACOS} \
+		-headers ${FRAMEWORK_HEADERS} \
 		-library ${STATIC_SIM} \
-		-headers ${STATIC_IOS}/Headers \
+		-headers ${FRAMEWORK_HEADERS} \
 		-output libgit2.xcframework
 
 codesign:
 	codesign_identity=$(security find-identity -v -p codesigning | grep A33F2F2 | grep -o -E '\w{40}' | head -n 1)
-	codesign -f --deep -s A33F2F2109D0B247A923E3DA0AB159D8E559020C libgit2.xcframework
+	codesign -f --deep -s 769B34C9C0E7AA7E0B0D60FF33C9F6F565288DBC libgit2.xcframework
 
 clean:
 	@echo " Cleaning...";
