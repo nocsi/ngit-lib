@@ -37,7 +37,7 @@ build: build_ios build_macos build_sim
 
 build_ios:
 	( cd ./$(TARGETDIR) && \
-	$(BUILD_OPENSSL) --targets="ios64-cross-arm64" --ec-nistp-64-gcc-128 --version=1.1.0f && \
+	$(BUILD_OPENSSL) --targets="ios64-cross-arm64" --ec-nistp-64-gcc-128 --version=$(OPENSSLVER) && \
 	$(BUILD_LIBSSH) --targets="ios64-cross-arm64" --version=$(LIBSSHVER) && \
 	$(BUILD_LIBCURL) --targets="ios64-cross-arm64" --version=$(LIBCURLVER) && \
   $(BUILD_LIBGIT) --targets="ios64-cross-arm64" --version=$(LIBGITVER) --verbose && \
@@ -45,7 +45,7 @@ build_ios:
 
 build_macos:
 	( cd ./$(TARGETDIR) && \
-	$(BUILD_OPENSSL) --targets="mac-catalyst-x86_64" --ec-nistp-64-gcc-128 --version=1.1.0f && \
+	$(BUILD_OPENSSL) --targets="mac-catalyst-x86_64" --ec-nistp-64-gcc-128 --version=$(OPENSSLVER) && \
 	$(BUILD_LIBSSH) --targets="mac-catalyst-x86_64" --version=$(LIBSSHVER) && \
 	$(BUILD_LIBCURL) --targets="mac-catalyst-x86_64" --version=$(LIBCURLVER) && \
 	$(BUILD_LIBGIT) --targets="mac-catalyst-x86_64" --version=$(LIBGITVER) --verbose && \
@@ -53,7 +53,7 @@ build_macos:
 
 build_sim:
 	( cd ./$(TARGETDIR) && \
-	$(BUILD_OPENSSL) --targets="ios-sim-cross-x86_64" --ec-nistp-64-gcc-128 --version=1.1.0f && \
+	$(BUILD_OPENSSL) --targets="ios-sim-cross-x86_64" --ec-nistp-64-gcc-128 --version=$(OPENSSLVER) && \
 	$(BUILD_LIBSSH) --targets="ios-sim-cross-x86_64" --version=$(LIBSSHVER) && \
 	$(BUILD_LIBCURL) --targets="ios-sim-cross-x86_64" --version=$(LIBCURLVER) && \
 	$(BUILD_LIBGIT) --targets="ios-sim-cross-x86_64" --version=$(LIBGITVER) --verbose && \
