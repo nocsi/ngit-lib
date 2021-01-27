@@ -22,10 +22,14 @@
 for TARGET in ${TARGETS}
 do
   # Determine relevant SDK version
-  if [[ "${TARGET}" == tvos* ]]; then
+  if [[ "${TARGET}" == macos* ]]; then
+    SDKVERSION="${MACOS_SDKVERSION}"
+  elif [[ "${TARGET}" == mac-catalyst-* ]]; then
+    SDKVERSION="${CATALYST_SDKVERSION}"
+  elif [[ "${TARGET}" == watchos* ]]; then
+    SDKVERSION="${WATCHOS_SDKVERSION}"
+  elif [[ "${TARGET}" == tvos* ]]; then
     SDKVERSION="${TVOS_SDKVERSION}"
-  elif [[ "${TARGET}" == "mac-catalyst"* ]]; then
-    SDKVERSION="${MACOSX_SDKVERSION}"
   else
     SDKVERSION="${IOS_SDKVERSION}"
   fi
@@ -33,18 +37,30 @@ do
   # These variables are used in the configuration file
   export SDKVERSION
   export IOS_MIN_SDK_VERSION
+  export MACOS_MIN_SDK_VERSION
+  export CATALYST_MIN_SDK_VERSION
+  export WATCHOS_MIN_SDK_VERSION
   export TVOS_MIN_SDK_VERSION
   export CONFIG_DISABLE_BITCODE
 
   # Determine platform
-  if [[ "${TARGET}" == "ios-sim-cross-"* ]]; then
-    PLATFORM="iPhoneSimulator"
+  if [[ "${TARGET}" == "macos"* ]]; then
+    PLATFORM="MacOSX"
+    if [[ "${TARGET}" == "macos64-arm64" ]]; then
+      MACOS_MIN_SDK_VERSION="11.0"
+    fi
+  elif [[ "${TARGET}" == "mac-catalyst-"* ]]; then
+    PLATFORM="MacOSX"
+  elif [[ "${TARGET}" == "watchos-sim-cross"* ]]; then
+    PLATFORM="WatchSimulator"
+  elif [[ "${TARGET}" == "watchos"* ]]; then
+    PLATFORM="WatchOS"
   elif [[ "${TARGET}" == "tvos-sim-cross-"* ]]; then
     PLATFORM="AppleTVSimulator"
   elif [[ "${TARGET}" == "tvos64-cross-"* ]]; then
     PLATFORM="AppleTVOS"
-  elif [[ "${TARGET}" == "mac-catalyst-"* ]]; then
-    PLATFORM="MacOSX"
+  elif [[ "${TARGET}" == "ios-sim-cross-"* ]]; then
+    PLATFORM="iPhoneSimulator"
   else
     PLATFORM="iPhoneOS"
   fi
@@ -58,19 +74,28 @@ do
   export CROSS_SDK="${PLATFORM}${SDKVERSION}.sdk"
 
   # Prepare TARGETDIR and SOURCEDIR
+  PLATFORM="${PLATFORM}"
+  if [[ "${TARGET}" == "mac-catalyst-"* ]]; then
+    PLATFORM="Catalyst"
+  fi
   prepare_target_source_dirs
 
   ## Determine config options
   # Add build target, --prefix and prevent async (references to getcontext(),
   # setcontext() and makecontext() result in App Store rejections) and creation
   # of shared libraries (default since 1.1.0)
-  LOCAL_CONFIG_OPTIONS="${TARGET} --prefix=${TARGETDIR} ${CONFIG_OPTIONS} no-dso no-engine no-hw no-async no-shared"
-  LOCAL_CONFIG_OPTIONS="${LOCAL_CONFIG_OPTIONS} enable-ec_nistp_64_gcc_128"
+  LOCAL_CONFIG_OPTIONS="${TARGET} --prefix=${TARGETDIR} ${CONFIG_OPTIONS} no-async no-shared"
 
   # Only relevant for 64 bit builds
-  #if [[ "${CONFIG_ENABLE_EC_NISTP_64_GCC_128}" == "true" && "${ARCH}" == *64  ]]; then
-  #  LOCAL_CONFIG_OPTIONS="${LOCAL_CONFIG_OPTIONS} enable-ec_nistp_64_gcc_128"
-  #fi
+  if [[ "${CONFIG_ENABLE_EC_NISTP_64_GCC_128}" == "true" && "${ARCH}" == *64  ]]; then
+    LOCAL_CONFIG_OPTIONS="${LOCAL_CONFIG_OPTIONS} enable-ec_nistp_64_gcc_128"
+  fi
+
+  # openssl-1.1.1 tries to use an unguarded fork(), affecting AppleTVOS and WatchOS.
+  # Luckily this is only present in the testing suite and can be built without it.
+  if [[ $PLATFORM == "AppleTV"* || $PLATFORM == "Watch"* ]]; then
+    LOCAL_CONFIG_OPTIONS="${LOCAL_CONFIG_OPTIONS} no-tests"
+  fi
 
   # Run Configure
   run_configure

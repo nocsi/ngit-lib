@@ -116,12 +116,10 @@ run_configure()
 
   if [ "${LOG_VERBOSE}" == "verbose" ]; then
     cd $COMPILEDIR && \
-    PKG_CONFIG_PATH="${TARGETDIR}/lib/pkgconfig" /opt/homebrew/bin/cmake --config Release .. ${LOCAL_CONFIG_OPTIONS} | tee "${LOG}"
-    #PKG_CONFIG_PATH="${TARGETDIR}/lib/pkgconfig" /usr/local/bin/cmake --config Release .. ${LOCAL_CONFIG_OPTIONS} | tee "${LOG}"
+    PKG_CONFIG_PATH="${TARGETDIR}/lib/pkgconfig" cmake --config Release .. ${LOCAL_CONFIG_OPTIONS} | tee "${LOG}"
   else
     ( cd $COMPILEDIR && \
-    PKG_CONFIG_PATH="${TARGETDIR}/lib/pkgconfig" /opt/homebrew/bin/cmake --config Release .. ${LOCAL_CONFIG_OPTIONS} > "${LOG}" 2>&1 ) & spinner
-    #PKG_CONFIG_PATH="${TARGETDIR}/lib/pkgconfig" /usr/local/bin/cmake --config Release .. ${LOCAL_CONFIG_OPTIONS} > "${LOG}" 2>&1 ) & spinner
+    PKG_CONFIG_PATH="${TARGETDIR}/lib/pkgconfig" cmake --config Release .. ${LOCAL_CONFIG_OPTIONS} > "${LOG}" 2>&1 ) & spinner
   fi
 
   # Check for error status
@@ -134,12 +132,10 @@ run_make()
   echo "  Make (using ${BUILD_THREADS} thread(s))..."
 
   if [ "${LOG_VERBOSE}" == "verbose" ]; then
-    /opt/homebrew/bin/cmake --build . --target install | tee -a "${LOG}"
-    #/usr/local/bin/cmake --build . --target install | tee -a "${LOG}"
+    cmake --build . --target install | tee -a "${LOG}"
     #/usr/local/bin/cmake --build . --config Release --target install | tee -a "${LOG}"
   else
-    /opt/homebrew/bin/cmake --build . --target install
-    #/usr/local/bin/cmake --build . --target install
+    cmake --build . --target install
   fi
 
   # Check for error status
