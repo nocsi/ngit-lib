@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#  Automatic build script for libssh2 
+#  Automatic build script for libssh2
 #  for iPhoneOS, iPhoneSimulator and MacCatalyst
 #
 
@@ -16,9 +16,9 @@ DEFAULTVERSION="1.9.0"
 DEFAULTTARGETS="ios-sim-cross-x86_64 ios-sim-cross-i386 ios64-cross-arm64 ios-cross-armv7s ios-cross-armv7 tvos-sim-cross-x86_64 tvos64-cross-arm64"  # mac-catalyst-x86_64 is a valid target that is not in the DEFAULTTARGETS because it's incompatible with "ios-sim-cross-x86_64"
 
 # Minimum iOS/tvOS SDK version to build for
-IOS_MIN_SDK_VERSION="13.0"
-TVOS_MIN_SDK_VERSION="9.0"
-MACOSX_MIN_SDK_VERSION="10.15"
+IOS_MIN_SDK_VERSION="14.0"
+TVOS_MIN_SDK_VERSION="10.0"
+MACOSX_MIN_SDK_VERSION="11.1"
 
 # Init optional env variables (use available variable or default to empty string)
 CURL_OPTIONS="${CURL_OPTIONS:-}"
@@ -116,7 +116,7 @@ run_configure()
   unset EXTRA_CMAKE_ARGS
   unset PKG_CONFIG_PATH
   export CC="$CLANG"
-  export CPP="$CLANG -E" 
+  export CPP="$CLANG -E"
   #export CFLAGS="-arch $ARCH -pipe -no-cpp-precomp -isysroot $SDKROOT -mios-version-min=13.0 -fembed-bitcode"
   #export CPPFLAGS="-arch $ARCH -pipe -no-cpp-precomp -isysroot $SDKROOT -mios-version-min=13.0"
   echo $LOCAL_CONFIG_OPTIONS
@@ -452,6 +452,9 @@ if [ ${#LIBSSHCONF_ALL[@]} -gt 1 ]; then
       ;;
       *_catalyst_x86_64.h)
         DEFINE_CONDITION="(TARGET_OS_MACCATALYST || (TARGET_OS_IOS && TARGET_OS_SIMULATOR)) && TARGET_CPU_X86_64"
+      ;;
+      *_catalyst_arm64.h)
+        DEFINE_CONDITION="(TARGET_OS_MACCATALYST || (TARGET_OS_IOS && TARGET_OS_SIMULATOR)) && TARGET_CPU_ARM64"
       ;;
       *_tvos_x86_64.h)
         DEFINE_CONDITION="TARGET_OS_TV && TARGET_OS_SIMULATOR && TARGET_CPU_X86_64"

@@ -544,6 +544,9 @@ if [ ${#OPENSSLCONF_ALL[@]} -gt 1 ]; then
       *_catalyst_x86_64.h)
         DEFINE_CONDITION="(TARGET_OS_MACCATALYST || (TARGET_OS_IOS && TARGET_OS_SIMULATOR)) && TARGET_CPU_X86_64"
       ;;
+      *_catalyst_arm64.h)
+        DEFINE_CONDITION="(TARGET_OS_MACCATALYST || (TARGET_OS_IOS && TARGET_OS_SIMULATOR)) && TARGET_CPU_ARM64"
+      ;;
       *_tvos_x86_64.h)
         DEFINE_CONDITION="TARGET_OS_TV && TARGET_OS_SIMULATOR && TARGET_CPU_X86_64"
       ;;
@@ -575,4 +578,3 @@ if [ ${#OPENSSLCONF_ALL[@]} -gt 1 ]; then
 fi
 
 echo "Done."
-

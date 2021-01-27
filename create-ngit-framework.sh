@@ -1,7 +1,8 @@
 #!/bin/sh
 
 FWNAME=libgit2
-DEFAULTTARGETS="iOS-arm64 macOS-x86_64 simulator-x86_64"  # mac-catalyst-x86_64 is a valid target that is not in the DEFAULTTARGETS because it's incompatible with "ios-sim-cross-x86_64"
+#DEFAULTTARGETS="iOS-arm64 macOS-x86_64 simulator-x86_64"  # mac-catalyst-x86_64 is a valid target that is not in the DEFAULTTARGETS because it's incompatible with "ios-sim-cross-x86_64"
+DEFAULTTARGETS="iOS-arm64 macOS-arm64 simulator-arm64"  # mac-catalyst-x86_64 is a valid target that is not in the DEFAULTTARGETS because it's incompatible with "ios-sim-cross-x86_64"
 
 echo_help()
 {
@@ -97,7 +98,7 @@ do
   fi
 
   if [ "$DYNAMIC" == "true" ]; then
-  	LIBTOOL_FLAGS="-dynamic -undefined dynamic_lookup -ios_version_min 13.0"
+  	LIBTOOL_FLAGS="-dynamic -undefined dynamic_lookup -ios_version_min 14.0"
   else
   	LIBTOOL_FLAGS="-static"
   fi

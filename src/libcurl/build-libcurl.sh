@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#  Automatic build script for libcurl 
+#  Automatic build script for libcurl
 #  for iPhoneOS, iPhoneSimulator and MacCatalyst
 #
 
@@ -341,7 +341,7 @@ if [ ! -e ${LIBCURL_ARCHIVE_FILE_NAME} ]; then
 
   # Archive was found, so proceed with download.
   # -O Use server-specified filename for download
-  curl ${CURL_OPTIONS} -L "${LIBCURL_ARCHIVE_URL}" -o ${LIBCURL_ARCHIVE_FILE_NAME} 
+  curl ${CURL_OPTIONS} -L "${LIBCURL_ARCHIVE_URL}" -o ${LIBCURL_ARCHIVE_FILE_NAME}
 
 else
   echo "Using ${LIBCURL_ARCHIVE_FILE_NAME}"
@@ -442,6 +442,9 @@ if [ ${#LIBCURLCONF_ALL[@]} -gt 1 ]; then
       ;;
       *_catalyst_x86_64.h)
         DEFINE_CONDITION="(TARGET_OS_MACCATALYST || (TARGET_OS_IOS && TARGET_OS_SIMULATOR)) && TARGET_CPU_X86_64"
+      ;;
+      *_catalyst_arm64.h)
+        DEFINE_CONDITION="(TARGET_OS_MACCATALYST || (TARGET_OS_IOS && TARGET_OS_SIMULATOR)) && TARGET_CPU_ARM64"
       ;;
       *_tvos_x86_64.h)
         DEFINE_CONDITION="TARGET_OS_TV && TARGET_OS_SIMULATOR && TARGET_CPU_X86_64"

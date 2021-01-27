@@ -57,6 +57,7 @@
 #    OS64COMBINED = Build for arm64 x86_64 iphoneOS. Combined into FAT STATIC lib (supported on 3.14+ of CMakewith "-G Xcode" argument ONLY)
 #    SIMULATOR = Build for x86 i386 iphoneOS Simulator.
 #    SIMULATOR64 = Build for x86_64 iphoneOS Simulator.
+#    SIMULATORARM64 = Build for arm64 iphoneOS Simulator.
 #    TVOS = Build for arm64 tvOS.
 #    TVOSCOMBINED = Build for arm64 x86_64 tvOS. Combined into FAT STATIC lib (supported on 3.14+ of CMake with "-G Xcode" argument ONLY)
 #    SIMULATOR_TVOS = Build for x86_64 tvOS Simulator.

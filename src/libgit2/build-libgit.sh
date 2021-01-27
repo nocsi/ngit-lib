@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#  Automatic build script for libgit2 
+#  Automatic build script for libgit2
 #  for iPhoneOS, iPhoneSimulator and MacCatalyst
 #
 
@@ -116,10 +116,12 @@ run_configure()
 
   if [ "${LOG_VERBOSE}" == "verbose" ]; then
     cd $COMPILEDIR && \
-    PKG_CONFIG_PATH="${TARGETDIR}/lib/pkgconfig" /usr/local/bin/cmake --config Release .. ${LOCAL_CONFIG_OPTIONS} | tee "${LOG}"
+    PKG_CONFIG_PATH="${TARGETDIR}/lib/pkgconfig" /opt/homebrew/bin/cmake --config Release .. ${LOCAL_CONFIG_OPTIONS} | tee "${LOG}"
+    #PKG_CONFIG_PATH="${TARGETDIR}/lib/pkgconfig" /usr/local/bin/cmake --config Release .. ${LOCAL_CONFIG_OPTIONS} | tee "${LOG}"
   else
     ( cd $COMPILEDIR && \
-    PKG_CONFIG_PATH="${TARGETDIR}/lib/pkgconfig" /usr/local/bin/cmake --config Release .. ${LOCAL_CONFIG_OPTIONS} > "${LOG}" 2>&1 ) & spinner
+    PKG_CONFIG_PATH="${TARGETDIR}/lib/pkgconfig" /opt/homebrew/bin/cmake --config Release .. ${LOCAL_CONFIG_OPTIONS} > "${LOG}" 2>&1 ) & spinner
+    #PKG_CONFIG_PATH="${TARGETDIR}/lib/pkgconfig" /usr/local/bin/cmake --config Release .. ${LOCAL_CONFIG_OPTIONS} > "${LOG}" 2>&1 ) & spinner
   fi
 
   # Check for error status
@@ -132,10 +134,12 @@ run_make()
   echo "  Make (using ${BUILD_THREADS} thread(s))..."
 
   if [ "${LOG_VERBOSE}" == "verbose" ]; then
-    /usr/local/bin/cmake --build . --target install | tee -a "${LOG}"
+    /opt/homebrew/bin/cmake --build . --target install | tee -a "${LOG}"
+    #/usr/local/bin/cmake --build . --target install | tee -a "${LOG}"
     #/usr/local/bin/cmake --build . --config Release --target install | tee -a "${LOG}"
   else
-    /usr/local/bin/cmake --build . --target install 
+    /opt/homebrew/bin/cmake --build . --target install
+    #/usr/local/bin/cmake --build . --target install
   fi
 
   # Check for error status
@@ -344,7 +348,7 @@ if [ ! -e ${LIBGIT_ARCHIVE_FILE_NAME} ]; then
 
   # Archive was found, so proceed with download.
   # -O Use server-specified filename for download
-  curl ${CURL_OPTIONS} -L "${LIBGIT_ARCHIVE_URL}" -o ${LIBGIT_ARCHIVE_FILE_NAME} 
+  curl ${CURL_OPTIONS} -L "${LIBGIT_ARCHIVE_URL}" -o ${LIBGIT_ARCHIVE_FILE_NAME}
 
 else
   echo "Using ${LIBGIT_ARCHIVE_FILE_NAME}"
@@ -444,6 +448,9 @@ if [ ${#LIBGITCONF_ALL[@]} -gt 1 ]; then
       ;;
       *_catalyst_x86_64.h)
         DEFINE_CONDITION="(TARGET_OS_MACCATALYST || (TARGET_OS_IOS && TARGET_OS_SIMULATOR)) && TARGET_CPU_X86_64"
+      ;;
+      *_catalyst_arm64.h)
+        DEFINE_CONDITION="(TARGET_OS_MACCATALYST || (TARGET_OS_IOS && TARGET_OS_SIMULATOR)) && TARGET_CPU_ARM64"
       ;;
       *_tvos_x86_64.h)
         DEFINE_CONDITION="TARGET_OS_TV && TARGET_OS_SIMULATOR && TARGET_CPU_X86_64"
