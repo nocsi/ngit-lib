@@ -1,6 +1,7 @@
 tmp
 .DS_Store
 target/bin/
+target/include/
 target/lib/
 target/src/
 target/libssh2*
